@@ -77,6 +77,13 @@ def test_givenZeroInchAndNonFloatType_WhenCompared_ShouldReturn_True():
     assert first_inch == second_inch
 
 
+# Comparing If We Given Two Different Values and Then Should Return False
+def test_givenDifferentInchValues_WhenCompared_ShouldReturn_False():
+    first_inch = Inch(1.0)
+    second_inch = Inch(2.0)
+    assert (first_inch == second_inch) == False
+
+
 # Checking The Conversion of 3 Feet is equal to 1 Yard, if it True then should return True
 def test_given_3Ft_And_1Yard_whenCompared_ShouldReturn_True():
     first_feet = Feet(3.0)
@@ -96,6 +103,3 @@ def test_given_1Yard_And_3Ft_WhenCompared_ShouldReturn_True():
     first_yard = Yard(1.0)
     second_feet = Feet(3.0)
     assert first_yard == second_feet
-
-
-
