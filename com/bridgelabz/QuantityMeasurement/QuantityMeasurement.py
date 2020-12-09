@@ -8,6 +8,8 @@ class Feet:
         self.feet = feet
 
     def __eq__(self, other):
+        if isinstance(other, Yard):
+            return self.feet == other.yard * 3
         return self.feet == other
 
 
@@ -18,4 +20,6 @@ class Yard:
         self.yard = yard
 
     def __eq__(self, other):
+        if isinstance(other, Feet):
+            return other.feet == self.yard * 3
         return self.yard == other
