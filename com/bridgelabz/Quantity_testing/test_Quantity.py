@@ -103,3 +103,9 @@ def test_given_1Yard_And_3Ft_WhenCompared_ShouldReturn_True():
     first_yard = Yard(1.0)
     second_feet = Feet(3.0)
     assert first_yard == second_feet
+
+
+def test_given_1Inch_And_1Yard_WhenCompared_ShoulReturn_False():
+    first_inch = Inch(1.0)
+    second_yard = Yard(1.0)
+    assert first_inch != second_yard
