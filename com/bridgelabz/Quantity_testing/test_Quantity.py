@@ -117,3 +117,10 @@ def test_given_1Yard_And_36Inch_whenCompared_shouldReturn_True():
     first_yard = Yard(1.0)
     second_inch = Inch(36.0)
     assert first_yard == second_inch
+
+
+# Checking the Conversion of 36Inch is equal to 1 Yard, when checked should return True
+def test_given_36inch_And_1Yard_whenCompared_ShouldReturn_True():
+    first_inch = Inch(36.0)
+    second_yard = Yard(1.0)
+    assert first_inch == second_yard
