@@ -9,3 +9,13 @@ class Feet:
 
     def __eq__(self, other):
         return self.feet == other
+
+
+class Yard:
+    def __init__(self, yard):
+        if type(yard) != float:
+            raise QuantityMeasurementError("Entered Value is not float type")
+        self.yard = yard
+
+    def __eq__(self, other):
+        return self.yard == other
