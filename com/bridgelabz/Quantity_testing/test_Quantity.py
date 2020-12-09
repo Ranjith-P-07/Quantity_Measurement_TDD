@@ -80,6 +80,7 @@ def test_given_1Yard_And_3Ft_WhenCompared_ShouldReturn_True():
 
 # Comparing Two same Feet Values and Should return True
 def test_givenZeroInchAndZeroInch_whenCompared_returns_true():
-    first_feet = Inch(0.0)
-    second_feet = Inch(0.0)
-    assert first_feet == second_feet
+    first_inch = Inch(0.0)
+    second_inch = Inch(0.0)
+    assert first_inch == second_inch
+
