@@ -57,6 +57,19 @@ def test_givenDifferentYardValues_WhenCompared_ShouldReturn_False():
     assert (first_yard == second_yard) == False
 
 
+# Comparing Two same Inch Values and Should return True
+def test_givenZeroInchAndZeroInch_whenCompared_returns_true():
+    first_inch = Inch(0.0)
+    second_inch = Inch(0.0)
+    assert first_inch == second_inch
+
+
+# Comparing If We give only one value to Inch to check whether it is Returning False or not
+def test_givenZeroInchAndNone_whenCompared_returns_False():
+    first_inch = Inch(0.0)
+    assert first_inch is not None
+
+
 # Checking The Conversion of 3 Feet is equal to 1 Yard, if it True then should return True
 def test_given_3Ft_And_1Yard_whenCompared_ShouldReturn_True():
     first_feet = Feet(3.0)
@@ -78,9 +91,4 @@ def test_given_1Yard_And_3Ft_WhenCompared_ShouldReturn_True():
     assert first_yard == second_feet
 
 
-# Comparing Two same Feet Values and Should return True
-def test_givenZeroInchAndZeroInch_whenCompared_returns_true():
-    first_inch = Inch(0.0)
-    second_inch = Inch(0.0)
-    assert first_inch == second_inch
 
