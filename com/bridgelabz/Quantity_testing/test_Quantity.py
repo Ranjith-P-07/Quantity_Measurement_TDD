@@ -98,14 +98,22 @@ def test_given_1Ft_And_1Yard_WhenCompared_ShouldReturn_False():
     assert first_feet != second_yard
 
 
-# Checking The Conversion of 1 Yard is equal to 3 Feet, Whwn checked Should return True
+# Checking The Conversion of 1 Yard is equal to 3 Feet, When checked Should return True
 def test_given_1Yard_And_3Ft_WhenCompared_ShouldReturn_True():
     first_yard = Yard(1.0)
     second_feet = Feet(3.0)
     assert first_yard == second_feet
 
 
+# Checking the Conversion of 1Inch is equal to 1 yard, when checked should return False
 def test_given_1Inch_And_1Yard_WhenCompared_ShoulReturn_False():
     first_inch = Inch(1.0)
     second_yard = Yard(1.0)
     assert first_inch != second_yard
+
+
+# Checking the Conversion of 1Yard is equal to 36 Inch, when checked should return True
+def test_given_1Yard_And_36Inch_whenCompared_shouldReturn_True():
+    first_yard = Yard(1.0)
+    second_inch = Inch(36.0)
+    assert first_yard == second_inch
