@@ -122,3 +122,9 @@ def test_given_36inch_And_1Yard_whenCompared_ShouldReturn_True():
     first_inch = QuantityMeasurement(Lengths.Inch, 36.0)
     second_yard = QuantityMeasurement(Lengths.Yard, 1.0)
     assert first_inch.compare(second_yard)
+
+
+def test_given_2Inch_And_5Cm_WhenCompared_ShouldReturn_True():
+    inch = QuantityMeasurement(Lengths.Inch, 2.0)
+    cm = QuantityMeasurement(Lengths.Cm, 5.0)
+    assert inch.compare(cm)
