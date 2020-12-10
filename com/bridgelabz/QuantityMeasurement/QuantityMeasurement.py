@@ -34,4 +34,11 @@ class Inch:
             return self.inch == other.feet * 12
         if isinstance(other, Yard):
             return self.inch == other.yard * 36
+        if isinstance(other, Cm):
+            return other.cm == self.inch * 2.5
         return self.inch == other
+
+
+class Cm:
+    def __init__(self, cm):
+        self.cm = cm
