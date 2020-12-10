@@ -126,6 +126,7 @@ def test_given_36inch_And_1Yard_whenCompared_ShouldReturn_True():
     assert first_inch == second_yard
 
 
+# Checking the Conversion of 2 Inch is equal to 5 cm , When Compared Should return True
 def test_given_2Inch_And_5Cm_WhenCompared_ShouldReturn_True():
     first_inch = Inch(2.0)
     second_cm = Cm(5)
