@@ -1,45 +1,34 @@
-from com.bridgelabz.QuantityMeasurement.QuantityMeasurementError import QuantityMeasurementError
+from enum import Enum
 
 
-class Feet:
-    def __init__(self, feet):
-        self.feet = feet
-
-    def __eq__(self, other):
-        if isinstance(other, Yard):
-            return self.feet == other.yard * 3
-        if isinstance(other, Inch):
-            return other.inch == self.feet * 12
-        return self.feet == other
-
-
-class Yard:
-    def __init__(self, yard):
-        self.yard = yard
+class QuantityMeasurement:
+    def __init__(self, unit, value):
+        self.unit = unit
+        self.value = value
 
     def __eq__(self, other):
-        if isinstance(other, Feet):
-            return other.feet == self.yard * 3
-        if isinstance(other, Inch):
-            return other.inch == self.yard * 36
-        return self.yard == other
+        if isinstance(other, QuantityMeasurement):
+            return self.unit == other.unit and self.value == other.value
+        return False
+
+    def compare(self, other):
+        if isinstance(self.unit, Lengths) and isinstance(other.unit, Lengths):
+            if Lengths.convert(self.unit, self.value) == Lengths.convert(other.unit, other.value):
+                return True
+        return False
 
 
-class Inch:
-    def __init__(self, inch):
-        self.inch = inch
+class Lengths(Enum):
+    """
+    Here Inch is taken as a Base Unit
+    """
+    Feet = 12.0
+    Inch = 1.0
+    Yard = 36.0
+    Cm = 0.4
 
-    def __eq__(self, other):
-        if isinstance(other, Feet):
-            return self.inch == other.feet * 12
-        if isinstance(other, Yard):
-            return self.inch == other.yard * 36
-        if isinstance(other, Cm):
-            return other.cm == self.inch * 2.5
-        return self.inch == other
+    # def __init__(self, unit):
+    #     self.unit = unit
 
-
-class Cm:
-    def __init__(self, cm):
-        self.cm = cm
-
+    def convert(self, value):
+        return self.unit * value
