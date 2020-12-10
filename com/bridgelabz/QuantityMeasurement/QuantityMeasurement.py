@@ -27,8 +27,8 @@ class Lengths(Enum):
     Yard = 36.0
     Cm = 0.4
 
-    # def __init__(self, unit):
-    #     self.unit = unit
+    def __init__(self, unit):
+        self.unit = unit
 
     def convert(self, value):
         return self.unit * value
