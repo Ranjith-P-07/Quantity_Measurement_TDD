@@ -42,3 +42,4 @@ class Inch:
 class Cm:
     def __init__(self, cm):
         self.cm = cm
+
