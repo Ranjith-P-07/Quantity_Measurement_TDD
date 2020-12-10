@@ -20,7 +20,7 @@ class QuantityMeasurement:
 
 class Lengths(Enum):
     """
-    Here Inch is taken as a Base Unit
+    Here Inch is taken as a Base Unit.
     """
     Feet = 12.0
     Inch = 1.0
