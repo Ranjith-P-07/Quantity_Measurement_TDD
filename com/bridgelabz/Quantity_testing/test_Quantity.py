@@ -1,4 +1,4 @@
-from com.bridgelabz.QuantityMeasurement.QuantityMeasurement import Feet, Yard, Inch
+from com.bridgelabz.QuantityMeasurement.QuantityMeasurement import Feet, Yard, Inch, Cm
 from com.bridgelabz.QuantityMeasurement.QuantityMeasurementError import QuantityMeasurementError
 import pytest
 
@@ -106,7 +106,7 @@ def test_given_1Yard_And_3Ft_WhenCompared_ShouldReturn_True():
 
 
 # Checking the Conversion of 1Inch is equal to 1 yard, when checked should return False
-def test_given_1Inch_And_1Yard_WhenCompared_ShoulReturn_False():
+def test_given_1Inch_And_1Yard_WhenCompared_ShouldReturn_False():
     first_inch = Inch(1.0)
     second_yard = Yard(1.0)
     assert first_inch != second_yard
@@ -124,3 +124,9 @@ def test_given_36inch_And_1Yard_whenCompared_ShouldReturn_True():
     first_inch = Inch(36.0)
     second_yard = Yard(1.0)
     assert first_inch == second_yard
+
+
+def test_given_2Inch_And_5Cm_WhenCompared_ShouldReturn_True():
+    first_inch = Inch(2.0)
+    second_cm = Cm(5)
+    assert first_inch == second_cm
