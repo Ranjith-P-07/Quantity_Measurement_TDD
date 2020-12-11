@@ -124,19 +124,31 @@ def test_given_36inch_And_1Yard_whenCompared_ShouldReturn_True():
     assert first_inch.compare(second_yard)
 
 
+# Checking the Conversion of 2Inch is equal to 5Cm, when checked should return True
 def test_given_2Inch_And_5Cm_WhenCompared_ShouldReturn_True():
     inch = QuantityMeasurement(Lengths.Inch, 2.0)
     cm = QuantityMeasurement(Lengths.Cm, 5.0)
     assert inch.compare(cm)
 
 
+# Checking the Conversion of 2 Inch + 2 Inch is equal to 4 Inch, when checked should return True
 def test_given_2Inch_Plus_2Inch_EqualsTo_4Inch_WhenCompared_ShouldReturn_True():
     inch = QuantityMeasurement(Lengths.Inch, 2.0) + QuantityMeasurement(Lengths.Inch, 2.0)
     inch3 = QuantityMeasurement(Lengths.Inch, 4.0)
     assert inch == inch3
 
 
+# Checking the Conversion of 1 Ft + 2 Inch is equal to 14 Inch, when checked should return True
 def test_given_1Ft_2Inch_EqualsTo_14Inch_WhenCompared_ShouldReturn_True():
     feet_inch = QuantityMeasurement(Lengths.Feet, 1) + QuantityMeasurement(Lengths.Inch, 2.0)
     inch = QuantityMeasurement(Lengths.Inch, 14)
     assert feet_inch == inch
+
+
+# Checking the Conversion of 1 Ft + 1 Ft is equal to 24 Inch, when checked should return True
+def test_given_1Ft_1Ft_EqualsTo_24Inch_WhenCompared_ShouldReturn_True():
+    feet = QuantityMeasurement(Lengths.Feet, 1.0) + QuantityMeasurement(Lengths.Feet, 1.0)
+    inch = QuantityMeasurement(Lengths.Inch, 24.0)
+    assert feet == inch
+
+
