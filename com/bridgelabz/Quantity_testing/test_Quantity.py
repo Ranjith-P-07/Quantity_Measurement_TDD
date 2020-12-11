@@ -204,3 +204,7 @@ def test_given_zeroTemp_And_ZeroTemp_WhenCompared_ShouldReturn_True(unit1, value
                          ])
 def test_given_Different_Values_Temp_whenCompared_returns_False(unit1, value1, unit2, value2):
     assert QuantityMeasurement(value1, unit1) != QuantityMeasurement(value2, unit2)
+
+
+def test_given_212F_And_100C_WhenCompared_ShouldReturn_True():
+    assert QuantityMeasurement(212, Temp.F) == QuantityMeasurement(100, Temp.C)
