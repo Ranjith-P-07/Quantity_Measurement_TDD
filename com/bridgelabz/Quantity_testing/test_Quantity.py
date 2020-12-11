@@ -197,3 +197,9 @@ def test_given_1Gallon_3_78Litre_equalsTo_7_56Litre_WhenCompared_ShouldReturn_Tr
     gallon_litre = QuantityMeasurement(Volume.Gallon, 1.0) + QuantityMeasurement(Volume.Litre, 3.78)
     litre = QuantityMeasurement(Volume.Litre, 7.56)
     assert gallon_litre == litre
+
+
+def test_given_1Litre_Plus_1000Ml_EqualsTo_2Litre_WhenCompared_ShouldReturn_True():
+    litre_ml = QuantityMeasurement(Volume.Litre, 1.0) + QuantityMeasurement(Volume.Ml, 1000)
+    litre = QuantityMeasurement(Volume.Litre, 2.0)
+    assert litre_ml == litre
