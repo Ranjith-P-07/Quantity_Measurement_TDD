@@ -1,4 +1,4 @@
-from com.bridgelabz.QuantityMeasurement.QuantityMeasurement import QuantityMeasurement, Lengths, Volume, Weight
+from com.bridgelabz.QuantityMeasurement.QuantityMeasurement import QuantityMeasurement, Lengths, Volume, Weight, Temp
 from com.bridgelabz.QuantityMeasurement.QuantityMeasurementError import QuantityMeasurementError
 import pytest
 
@@ -184,3 +184,14 @@ def test_given_1Tonne_And_1000Kgs_WhenCompared_ShouldReturn_True():
 
 def test_given_1Tonne_Plus_1000Gram_EqualsTo_1001Kg_WhenCompared_ShouldReturn_True():
     assert QuantityMeasurement(1.0, Weight.TONNE) + QuantityMeasurement(1000, Weight.GM) == 1001
+
+
+# Test Cases For Temperature:
+@pytest.mark.parametrize("unit1, value1, unit2, value2",
+                         [
+                             (Temp.F, 0.0, Temp.F, 0.0),
+                             (Temp.C, 0.0, Temp.C, 0.0),
+                         ])
+def test_given_zeroTemp_And_ZeroTemp_WhenCompared_ShouldReturn_True(unit1, value1, unit2, value2):
+    assert QuantityMeasurement(value1, unit1) == QuantityMeasurement(value2, unit2)
+
