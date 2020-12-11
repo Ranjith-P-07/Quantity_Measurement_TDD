@@ -180,3 +180,7 @@ def test_given_1Kg_And_1000Grams_WhenCompared_ShouldReturn_True():
 
 def test_given_1Tonne_And_1000Kgs_WhenCompared_ShouldReturn_True():
     assert QuantityMeasurement(1.0, Weight.TONNE) == QuantityMeasurement(1000, Weight.KG)
+
+
+def test_given_1Tonne_Plus_1000Gram_EqualsTo_1001Kg_WhenCompared_ShouldReturn_True():
+    assert QuantityMeasurement(1.0, Weight.TONNE) + QuantityMeasurement(1000, Weight.GM) == 1001
