@@ -162,3 +162,13 @@ def test_given_1Litre_Plus_1000Ml_EqualsTo_2Litre_WhenCompared_ShouldReturn_True
 def test_given_zeroWeight_And_ZeroWeight_WhenCompared_ShouldReturn_True(unit1, value1, unit2, value2):
     assert QuantityMeasurement(value1, unit1) == QuantityMeasurement(value2, unit2)
 
+
+@pytest.mark.parametrize("unit1, value1, unit2, value2",
+                         [
+                             (Weight.KG, 1.0, Weight.KG, 2.0),
+                             (Weight.GM, 1.0, Weight.GM, 2.0),
+                             (Weight.TONNE, 1.0, Weight.TONNE, 2.0),
+
+                         ])
+def test_given_Different_Values_Weight_whenCompared_returns_False(unit1, value1, unit2, value2):
+    assert QuantityMeasurement(value1, unit1) != QuantityMeasurement(value2, unit2)
