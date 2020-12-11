@@ -13,12 +13,22 @@ class QuantityMeasurement:
         self.choice = choice
 
     def __eq__(self, other):
+        """
+        Equal Magic method: For checking Whether Given Parameter is Equal or Not
+        :param other: Value from User
+        :return: checked Value
+        """
         if isinstance(other, QuantityMeasurement):
             if type(self.choice) == type(other.choice):
                 return self.choice.convert(self.value) == other.choice.convert(other.value)
             raise QuantityMeasurementError("Invalid Comparison")
 
     def __add__(self, other):
+        """
+        Add Magic method: For adding Two values
+        :param other: value from user
+        :return: added value
+        """
         if isinstance(other, QuantityMeasurement):
             if type(self.choice) == type(other.choice):
                 return self.choice.convert(self.value) + other.choice.convert(other.value)
@@ -38,6 +48,11 @@ class Lengths(Enum):
         self.unit = unit
 
     def convert(self, value):
+        """
+        converts the value into the base unit value
+        :param value: takes value from user
+        :return: converted value in base unit
+        """
         return self.unit * value
 
 
@@ -53,6 +68,11 @@ class Volume(Enum):
         self.unit = unit
 
     def convert(self, value):
+        """
+        converts the value into the base unit value
+        :param value: takes value from user
+        :return: converted value in base unit
+        """
         return self.unit * value
 
 
