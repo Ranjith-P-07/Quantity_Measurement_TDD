@@ -187,3 +187,7 @@ def test_given_1Gallon_And_3_78Li_WhenCompared_ShouldReturn_True():
     assert gallon.compare(gallon1)
 
 
+def test_given_1Litre_And_1000ml_WhenCompared_ShouldReturn_True():
+    gallon = QuantityMeasurement(Volume.Litre, 1.0)
+    gallon1 = QuantityMeasurement(Volume.Ml, 1000.0)
+    assert gallon.compare(gallon1)
