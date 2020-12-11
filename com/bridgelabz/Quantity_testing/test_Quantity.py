@@ -128,3 +128,9 @@ def test_given_2Inch_And_5Cm_WhenCompared_ShouldReturn_True():
     inch = QuantityMeasurement(Lengths.Inch, 2.0)
     cm = QuantityMeasurement(Lengths.Cm, 5.0)
     assert inch.compare(cm)
+
+
+def test_given_2Inch_Plus_2Inch_EqualsTo_4Inch_WhenCompared_ShouldReturn_True():
+    inch = QuantityMeasurement(Lengths.Inch, 2.0) + QuantityMeasurement(Lengths.Inch, 2.0)
+    inch3 = QuantityMeasurement(Lengths.Inch, 4.0)
+    assert inch == inch3
