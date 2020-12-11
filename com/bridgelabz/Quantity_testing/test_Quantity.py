@@ -171,3 +171,15 @@ def test_given_zeroVolume_And_ZeroVolume_WhenCompared_ShouldReturn_True(Volume1,
     assert (Volume1 == Volume2) == expected
 
 
+@pytest.mark.parametrize("Volume1, Volume2, expected",
+                         [
+                             (QuantityMeasurement(Volume.Gallon, 1.0), QuantityMeasurement(Volume.Gallon, 2.0), False),
+                             (QuantityMeasurement(Volume.Litre, 1.0), QuantityMeasurement(Volume.Litre, 2.0), False),
+                             (QuantityMeasurement(Volume.Ml, 1.0), QuantityMeasurement(Volume.Ml, 2.0), False),
+
+                         ])
+def test_given_Different_Values_whenCompared_returns_False(Volume1, Volume2, expected):
+    assert (Volume1 == Volume2) == expected
+
+
+
