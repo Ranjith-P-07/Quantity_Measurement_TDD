@@ -17,12 +17,19 @@ class QuantityMeasurement:
         if isinstance(self.unit, Lengths) and isinstance(other.unit, Lengths):
             if Lengths.convert(self.unit, self.value) == Lengths.convert(other.unit, other.value):
                 return True
+        if isinstance(self.unit, Volume) and isinstance(other.unit, Volume):
+            if Volume.convert(self.unit, self.value) == Volume.convert(other.unit, other.value):
+                return True
         return False
 
     def __add__(self, other):
         if isinstance(self.unit, Lengths) and isinstance(other.unit, Lengths):
             other.value = Lengths.convert(self.unit, self.value) + Lengths.convert(other.unit, other.value)
             other.unit = Lengths.Inch
+            return other
+        if isinstance(self.unit, Volume) and isinstance(other.unit, Volume):
+            other.value = Volume.convert(self.unit, self.value) + Volume.convert(other.unit, other.value)
+            other.unit = Volume.Litre
             return other
 
 
@@ -34,6 +41,21 @@ class Lengths(Enum):
     Inch = 1.0
     Yard = 36.0
     Cm = 0.4
+
+    def __init__(self, unit):
+        self.unit = unit
+
+    def convert(self, value):
+        return self.unit * value
+
+
+class Volume(Enum):
+    """
+    Here Litre is taken as a Base unit
+    """
+    Litre = 1.0
+    Gallon = 3.78
+    Ml = 0.001
 
     def __init__(self, unit):
         self.unit = unit
