@@ -176,3 +176,7 @@ def test_given_Different_Values_Weight_whenCompared_returns_False(unit1, value1,
 
 def test_given_1Kg_And_1000Grams_WhenCompared_ShouldReturn_True():
     assert QuantityMeasurement(1.0, Weight.KG) == QuantityMeasurement(1000, Weight.GM)
+
+
+def test_given_1Tonne_And_1000Kgs_WhenCompared_ShouldReturn_True():
+    assert QuantityMeasurement(1.0, Weight.TONNE) == QuantityMeasurement(1000, Weight.KG)
