@@ -195,3 +195,12 @@ def test_given_1Tonne_Plus_1000Gram_EqualsTo_1001Kg_WhenCompared_ShouldReturn_Tr
 def test_given_zeroTemp_And_ZeroTemp_WhenCompared_ShouldReturn_True(unit1, value1, unit2, value2):
     assert QuantityMeasurement(value1, unit1) == QuantityMeasurement(value2, unit2)
 
+
+@pytest.mark.parametrize("unit1, value1, unit2, value2",
+                         [
+                             (Temp.F, 1.0, Temp.F, 2.0),
+                             (Temp.C, 1.0, Temp.C, 2.0),
+
+                         ])
+def test_given_Different_Values_Temp_whenCompared_returns_False(unit1, value1, unit2, value2):
+    assert QuantityMeasurement(value1, unit1) != QuantityMeasurement(value2, unit2)
