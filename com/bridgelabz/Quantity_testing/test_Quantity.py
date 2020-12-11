@@ -1,5 +1,6 @@
-from com.bridgelabz.QuantityMeasurement.QuantityMeasurement import QuantityMeasurement, Lengths
+from com.bridgelabz.QuantityMeasurement.QuantityMeasurement import QuantityMeasurement, Lengths, Volume
 import pytest
+
 
 
 # Checking If both Values are Zero Then Should Return True
@@ -68,6 +69,7 @@ def test_givenZeroYardAndNonFloatType_WhenCompared_ShouldReturn_True():
     second_yard = QuantityMeasurement(Lengths.Yard, 0)
     assert first_yard == second_yard
 
+
 # Comparing If We give only one value to Inch to check whether it is Returning False or not
 def test_givenZeroInchAndNone_whenCompared_returns_False():
     first_inch = QuantityMeasurement(Lengths.Inch, 0.0)
@@ -79,6 +81,7 @@ def test_givenZeroInchAndNonFloatType_WhenCompared_ShouldReturn_True():
     first_inch = QuantityMeasurement(Lengths.Inch, 0.0)
     second_inch = QuantityMeasurement(Lengths.Inch, 0)
     assert first_inch == second_inch
+
 
 # Checking The Conversion of 3 Feet is equal to 1 Yard, if it True then should return True
 def test_given_3Ft_And_1Yard_whenCompared_ShouldReturn_True():
@@ -155,3 +158,16 @@ def test_given_2Inch_2_5Cm_EqualsTo_3Inch_WhenCompared_ShouldReturn_True():
     inch_cm = QuantityMeasurement(Lengths.Inch, 2.0) + QuantityMeasurement(Lengths.Cm, 2.5)
     inch = QuantityMeasurement(Lengths.Inch, 3.0)
     assert inch_cm == inch
+
+
+# Test Cases For Volume:
+@pytest.mark.parametrize("Volume1, Volume2, expected",
+                         [
+                             (QuantityMeasurement(Volume.Gallon, 0.0), QuantityMeasurement(Volume.Gallon, 0.0), True),
+                             (QuantityMeasurement(Volume.Litre, 0.0), QuantityMeasurement(Volume.Litre, 0.0), True),
+                             (QuantityMeasurement(Volume.Ml, 0.0), QuantityMeasurement(Volume.Ml, 0.0), True),
+                         ])
+def test_given_zeroVolume_And_ZeroVolume_WhenCompared_ShouldReturn_True(Volume1, Volume2, expected):
+    assert (Volume1 == Volume2) == expected
+
+
