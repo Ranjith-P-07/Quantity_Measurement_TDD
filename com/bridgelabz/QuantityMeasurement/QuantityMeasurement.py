@@ -61,8 +61,8 @@ class Weight(Enum):
     Here Kg is taken as base unit
     """
     KG = 1
-    GM = 1000
-    TONNE = 0.001
+    GM = 0.001
+    TONNE = 1000
 
     def __init__(self, unit):
         self.unit = unit
