@@ -9,6 +9,8 @@ class QuantityMeasurement:
     def __eq__(self, other):
         if isinstance(other, QuantityMeasurement):
             return self.unit == other.unit and self.value == other.value
+        if self.unit == other.unit and self.value == other.value:
+            return True
         return False
 
     def compare(self, other):
@@ -16,6 +18,12 @@ class QuantityMeasurement:
             if Lengths.convert(self.unit, self.value) == Lengths.convert(other.unit, other.value):
                 return True
         return False
+
+    def __add__(self, other):
+        if isinstance(self.unit, Lengths) and isinstance(other.unit, Lengths):
+            other.value = Lengths.convert(self.unit, self.value) + Lengths.convert(other.unit, other.value)
+            other.unit = Lengths.Inch
+            return other
 
 
 class Lengths(Enum):
