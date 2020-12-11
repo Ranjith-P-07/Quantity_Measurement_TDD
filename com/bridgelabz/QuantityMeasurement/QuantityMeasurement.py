@@ -10,6 +10,11 @@ class QuantityMeasurement:
         self.value = value
 
     def __eq__(self, other):
+        """
+        Equal Magic method used for Checking
+        :param other: unit, value
+        :return: True/False
+        """
         if isinstance(other, QuantityMeasurement):
             return self.unit == other.unit and self.value == other.value
         if self.unit == other.unit and self.value == other.value:
@@ -17,6 +22,11 @@ class QuantityMeasurement:
         return False
 
     def compare(self, other):
+        """
+        Compare mrthod used for comparing two units and values
+        :param other: unit, value
+        :return: True/False
+        """
         if isinstance(self.unit, Lengths) and isinstance(other.unit, Lengths):
             if Lengths.convert(self.unit, self.value) == Lengths.convert(other.unit, other.value):
                 return True
@@ -26,6 +36,11 @@ class QuantityMeasurement:
         return False
 
     def __add__(self, other):
+        """
+        Add Magic method used for adding Two unit values
+        :param other: Length/Volume
+        :return: other Object
+        """
         if isinstance(self.unit, Lengths) and isinstance(other.unit, Lengths):
             other.value = Lengths.convert(self.unit, self.value) + Lengths.convert(other.unit, other.value)
             other.unit = Lengths.Inch
