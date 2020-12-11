@@ -2,7 +2,6 @@ from com.bridgelabz.QuantityMeasurement.QuantityMeasurement import QuantityMeasu
 import pytest
 
 
-
 # Checking If both Values are Zero Then Should Return True
 @pytest.mark.parametrize("Length1, Length2, expected",
                          [
@@ -181,5 +180,10 @@ def test_given_zeroVolume_And_ZeroVolume_WhenCompared_ShouldReturn_True(Volume1,
 def test_given_Different_Values_whenCompared_returns_False(Volume1, Volume2, expected):
     assert (Volume1 == Volume2) == expected
 
+
+def test_given_1Gallon_And_3_78Li_WhenCompared_ShouldReturn_True():
+    gallon = QuantityMeasurement(Volume.Gallon, 1.0)
+    gallon1 = QuantityMeasurement(Volume.Litre, 3.78)
+    assert gallon.compare(gallon1)
 
 
