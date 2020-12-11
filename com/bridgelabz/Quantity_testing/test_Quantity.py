@@ -152,3 +152,8 @@ def test_given_1Ft_1Ft_EqualsTo_24Inch_WhenCompared_ShouldReturn_True():
     assert feet == inch
 
 
+# Checking the Conversion of 2 Inch + 2.5 Cm is equal to 3 Inch, when checked should return True
+def test_given_2Inch_2_5Cm_EqualsTo_3Inch_WhenCompared_ShouldReturn_True():
+    inch_cm = QuantityMeasurement(Lengths.Inch, 2.0) + QuantityMeasurement(Lengths.Cm, 2.5)
+    inch = QuantityMeasurement(Lengths.Inch, 3.0)
+    assert inch_cm == inch
