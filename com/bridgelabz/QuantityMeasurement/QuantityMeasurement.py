@@ -2,6 +2,9 @@ from enum import Enum
 
 
 class QuantityMeasurement:
+    """
+    This class is for Measurement Purpose like Comparing, adding..
+    """
     def __init__(self, unit, value):
         self.unit = unit
         self.value = value
