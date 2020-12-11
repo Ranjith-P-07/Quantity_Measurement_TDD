@@ -1,54 +1,28 @@
 from enum import Enum
 
+from com.bridgelabz.QuantityMeasurement.QuantityMeasurementError import QuantityMeasurementError
+
 
 class QuantityMeasurement:
     """
     This class is for Measurement Purpose like Comparing, adding..
     """
-    def __init__(self, unit, value):
-        self.unit = unit
+
+    def __init__(self, value, choice):
         self.value = value
+        self.choice = choice
 
     def __eq__(self, other):
-        """
-        Equal Magic method used for Checking
-        :param other: unit, value
-        :return: True/False
-        """
         if isinstance(other, QuantityMeasurement):
-            return self.unit == other.unit and self.value == other.value
-        if self.unit == other.unit and self.value == other.value:
-            return True
-        return False
-
-    def compare(self, other):
-        """
-        Compare mrthod used for comparing two units and values
-        :param other: unit, value
-        :return: True/False
-        """
-        if isinstance(self.unit, Lengths) and isinstance(other.unit, Lengths):
-            if Lengths.convert(self.unit, self.value) == Lengths.convert(other.unit, other.value):
-                return True
-        if isinstance(self.unit, Volume) and isinstance(other.unit, Volume):
-            if Volume.convert(self.unit, self.value) == Volume.convert(other.unit, other.value):
-                return True
-        return False
+            if type(self.choice) == type(other.choice):
+                return self.choice.convert(self.value) == other.choice.convert(other.value)
+            raise QuantityMeasurementError("Invalid Comparison")
 
     def __add__(self, other):
-        """
-        Add Magic method used for adding Two unit values
-        :param other: Length/Volume
-        :return: other Object
-        """
-        if isinstance(self.unit, Lengths) and isinstance(other.unit, Lengths):
-            other.value = Lengths.convert(self.unit, self.value) + Lengths.convert(other.unit, other.value)
-            other.unit = Lengths.Inch
-            return other
-        if isinstance(self.unit, Volume) and isinstance(other.unit, Volume):
-            other.value = Volume.convert(self.unit, self.value) + Volume.convert(other.unit, other.value)
-            other.unit = Volume.Litre
-            return other
+        if isinstance(other, QuantityMeasurement):
+            if type(self.choice) == type(other.choice):
+                return self.choice.convert(self.value) + other.choice.convert(other.value)
+            raise QuantityMeasurementError("Invalid addition")
 
 
 class Lengths(Enum):
@@ -79,4 +53,24 @@ class Volume(Enum):
         self.unit = unit
 
     def convert(self, value):
+        return self.unit * value
+
+
+class Weight(Enum):
+    """
+    Here Kg is taken as base unit
+    """
+    KG = 1
+    GM = 1000
+    TONNE = 0.001
+
+    def __init__(self, unit):
+        self.unit = unit
+
+    def convert(self, value):
+        """
+        converts the value into the base unit value
+        :param value: takes value from user
+        :return: converted value in base unit
+        """
         return self.unit * value
