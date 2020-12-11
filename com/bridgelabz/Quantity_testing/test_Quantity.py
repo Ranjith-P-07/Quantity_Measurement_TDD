@@ -134,3 +134,9 @@ def test_given_2Inch_Plus_2Inch_EqualsTo_4Inch_WhenCompared_ShouldReturn_True():
     inch = QuantityMeasurement(Lengths.Inch, 2.0) + QuantityMeasurement(Lengths.Inch, 2.0)
     inch3 = QuantityMeasurement(Lengths.Inch, 4.0)
     assert inch == inch3
+
+
+def test_given_1Ft_2Inch_EqualsTo_14Inch_WhenCompared_ShouldReturn_True():
+    feet_inch = QuantityMeasurement(Lengths.Feet, 1) + QuantityMeasurement(Lengths.Inch, 2.0)
+    inch = QuantityMeasurement(Lengths.Inch, 14)
+    assert feet_inch == inch
