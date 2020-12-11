@@ -1,11 +1,18 @@
 from com.bridgelabz.QuantityMeasurement.QuantityMeasurement import QuantityMeasurement, Lengths
+import pytest
 
 
-# Comparing Two same Feet Values and Should return True
-def test_givenZeroFtAndZeroFt_whenCompared_returns_true():
-    first_feet = QuantityMeasurement(Lengths.Feet, 0.0)
-    second_feet = QuantityMeasurement(Lengths.Feet, 0.0)
-    assert first_feet == second_feet
+# Checking If both Values are Zero Then Should Return True
+@pytest.mark.parametrize("Length1, Length2, expected",
+                         [
+                             (QuantityMeasurement(Lengths.Feet, 0.0), QuantityMeasurement(Lengths.Feet, 0.0), True),
+                             (QuantityMeasurement(Lengths.Yard, 0.0), QuantityMeasurement(Lengths.Yard, 0.0), True),
+                             (QuantityMeasurement(Lengths.Inch, 0.0), QuantityMeasurement(Lengths.Inch, 0.0), True),
+                             (QuantityMeasurement(Lengths.Cm, 0.0), QuantityMeasurement(Lengths.Cm, 0.0), True),
+
+                         ])
+def test_givenZeroLengthAndZeroLength_whenCompared_returns_true(Length1, Length2, expected):
+    assert (Length1 == Length2) == expected
 
 
 # Comparing If We give only one value to Feet to check whether it is Returning False or not
@@ -21,18 +28,32 @@ def test_givenZeroFtAndNonFloatType_WhenCompared_ShouldReturn_True():
     assert first_feet == second_feet
 
 
+@pytest.mark.parametrize("Length1, Length2, expected",
+                         [
+                             (QuantityMeasurement(Lengths.Feet, "Hello"), QuantityMeasurement(Lengths.Feet, "hi"),
+                              False),
+                             (QuantityMeasurement(Lengths.Yard, "Hello"), QuantityMeasurement(Lengths.Yard, "hi"),
+                              False),
+                             (QuantityMeasurement(Lengths.Inch, "Hello"), QuantityMeasurement(Lengths.Inch, "hi"),
+                              False),
+                             (QuantityMeasurement(Lengths.Cm, "Hello"), QuantityMeasurement(Lengths.Cm, "hi"), False),
+
+                         ])
+def test_givenString_And_String_whenCompared_returns_False(Length1, Length2, expected):
+    assert (Length1 == Length2) == expected
+
+
 # Comparing If We Given Two Different Values and Then Should Return False
-def test_givenDifferentFtValues_WhenCompared_ShouldReturn_False():
-    first_feet = QuantityMeasurement(Lengths.Feet, 1.0)
-    second_feet = QuantityMeasurement(Lengths.Feet, 2.0)
-    assert (first_feet == second_feet) == False
+@pytest.mark.parametrize("Length1, Length2, expected",
+                         [
+                             (QuantityMeasurement(Lengths.Feet, 1.0), QuantityMeasurement(Lengths.Feet, 2.0), False),
+                             (QuantityMeasurement(Lengths.Yard, 1.0), QuantityMeasurement(Lengths.Yard, 2.0), False),
+                             (QuantityMeasurement(Lengths.Inch, 1.0), QuantityMeasurement(Lengths.Inch, 2.0), False),
+                             (QuantityMeasurement(Lengths.Cm, 1.0), QuantityMeasurement(Lengths.Cm, 2.0), False),
 
-
-# Comparing Two same Yard Values and Should return True
-def test_givenZeroYardAndZeroYard_whenCompared_returns_true():
-    first_yard = QuantityMeasurement(Lengths.Yard, 0.0)
-    second_yard = QuantityMeasurement(Lengths.Yard, 0.0)
-    assert first_yard == second_yard
+                         ])
+def test_given_Different_Values_whenCompared_returns_False(Length1, Length2, expected):
+    assert (Length1 == Length2) == expected
 
 
 # Comparing If We give only one value to Yard to check whether it is Returning False or not
@@ -47,21 +68,6 @@ def test_givenZeroYardAndNonFloatType_WhenCompared_ShouldReturn_True():
     second_yard = QuantityMeasurement(Lengths.Yard, 0)
     assert first_yard == second_yard
 
-
-# Comparing If We Given Two Different Values and Then Should Return False
-def test_givenDifferentYardValues_WhenCompared_ShouldReturn_False():
-    first_yard = QuantityMeasurement(Lengths.Yard, 1.0)
-    second_yard = QuantityMeasurement(Lengths.Yard, 2.0)
-    assert (first_yard == second_yard) == False
-
-
-# Comparing Two same Inch Values and Should return True
-def test_givenZeroInchAndZeroInch_whenCompared_returns_true():
-    first_inch = QuantityMeasurement(Lengths.Inch, 0.0)
-    second_inch = QuantityMeasurement(Lengths.Inch, 0.0)
-    assert first_inch == second_inch
-
-
 # Comparing If We give only one value to Inch to check whether it is Returning False or not
 def test_givenZeroInchAndNone_whenCompared_returns_False():
     first_inch = QuantityMeasurement(Lengths.Inch, 0.0)
@@ -73,14 +79,6 @@ def test_givenZeroInchAndNonFloatType_WhenCompared_ShouldReturn_True():
     first_inch = QuantityMeasurement(Lengths.Inch, 0.0)
     second_inch = QuantityMeasurement(Lengths.Inch, 0)
     assert first_inch == second_inch
-
-
-# Comparing If We Given Two Different Values and Then Should Return False
-def test_givenDifferentInchValues_WhenCompared_ShouldReturn_False():
-    first_inch = QuantityMeasurement(Lengths.Inch, 1.0)
-    second_inch = QuantityMeasurement(Lengths.Inch, 2.0)
-    assert (first_inch == second_inch) == False
-
 
 # Checking The Conversion of 3 Feet is equal to 1 Yard, if it True then should return True
 def test_given_3Ft_And_1Yard_whenCompared_ShouldReturn_True():
